@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,7 @@ public class UserController {
 
 	//SaveUser(): fetchUserProfile >> user/save >> return User object -- @RequestBody
 	@PostMapping(path = "/save")
-	public User saveUser() {
+	public User saveUser(@RequestBody User user) {
 		return null;
 	}
 	
@@ -36,8 +37,8 @@ public class UserController {
 	}
 
 	//UpdateUser(need PathVariable): user/update/ -> RequestBody -> return UserObject
-	@PutMapping(path = "/update/{email}")
-	public User updateUser(@PathVariable String email) {
+	@PutMapping(path = "/update")
+	public User updateUser(@RequestBody User user) {
 		return null;
 	}
 
