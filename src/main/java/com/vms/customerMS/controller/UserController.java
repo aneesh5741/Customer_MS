@@ -24,7 +24,7 @@ public class UserController {
 	}
 
 	//SaveUser(): fetchUserProfile >> user/save >> return User object -- @RequestBody
-	@PostMapping(path = "/user/save")
+	@PostMapping(path = "/save")
 	public User saveUser() {
 		return null;
 	}
