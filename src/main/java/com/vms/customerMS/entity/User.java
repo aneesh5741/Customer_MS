@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vms.customerMS.util.Constant;
-import com.vms.customerMS.util.Role;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

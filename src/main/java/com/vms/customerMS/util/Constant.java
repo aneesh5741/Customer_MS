@@ -7,4 +7,5 @@ public class Constant {
 	
 	// table
 	public static final String USER_TABLE = "user";
+	public static final String LOCATION_TABLE = "location"; 
 }
