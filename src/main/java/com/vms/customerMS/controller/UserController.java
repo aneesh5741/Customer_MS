@@ -6,39 +6,44 @@ import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vms.customerMS.entity.User;
+
 @RestController
-public class CustomerMSController {
+@RequestMapping(path = "/user")
+public class UserController {
 	
 	//fetchUserProfile(need PathVariable): fetchUserProfile >> user/fetch/{email} >> return User object
-	@GetMapping(path = "/user/fetch/{email}")
-	public Object fetchUserProfile(@PathVariable(value = "emailId") String emailId) {
-		return "hello3453";
+	@GetMapping(path = "/fetch/{email}")
+	public User fetchUserProfile(@PathVariable String email) {
+		return null;
 	}
 
 	//SaveUser(): fetchUserProfile >> user/save >> return User object -- @RequestBody
-	@PutMapping(path = "/user/save")
-	public Object saveUser() {
-		return "hello3453";
+	@PostMapping(path = "/user/save")
+	public User saveUser() {
+		return null;
 	}
 	
 	//DeleteUser(need PathVariable): deleteUserProfile >> user/delete/{email}  -> return deleteCount
-	@DeleteMapping(path = "/user/delete/{emailId}")
-	public Integer deleteUser(@PathVariable(value = "emailId") String emailId) {
+	@DeleteMapping(path = "/delete/{email}")
+	public Integer deleteUser(@PathVariable String email) {
 		return 1;
 	}
 
 	//UpdateUser(need PathVariable): user/update/ -> RequestBody -> return UserObject
-	@PutMapping(path = "/user/update/{emailId}")
-	public Object UpdateUser(@PathVariable(value = "emailId") String emailId) {
-		return new Object();
+	@PutMapping(path = "/update/{email}")
+	public User updateUser(@PathVariable String email) {
+		return null;
 	}
 
 	//fetchOrders(need PathVaribale): user/get/orders/{email} -> return list of orders.(Static orders)
-	@GetMapping(path = "/user/get/orders/{email}")
-	public List<Object> fetchOrders(@PathVariable(value = "emailId") String emailId) {
+	@GetMapping(path = "/fetch/orders/{email}")
+	public List<Object> fetchOrders(@PathVariable String email) {
 		return new ArrayList<>();
 	}
 
