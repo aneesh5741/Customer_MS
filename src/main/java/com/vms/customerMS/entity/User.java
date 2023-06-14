@@ -1,8 +1,5 @@
 package com.vms.customerMS.entity;
 
-import java.sql.Timestamp;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vms.customerMS.util.Constant;
 import com.vms.customerMS.util.Role;
 
@@ -11,6 +8,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -27,12 +26,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(schema = Constant.CUSTOMER_SCHEMA, name = Constant.USER_TABLE)
+@Entity(name = "users")
+@Table( name = Constant.USER_TABLE)
 public class User {
 	
 	@Id
 	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank
@@ -43,10 +43,13 @@ public class User {
 	private String lastName;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "location_id", unique = true)
-	private Location location;
+	@JoinColumn(name = "user_location_id", unique = true)
+	private Location userLocation;
 	
-	@NotBlank
+	//@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	//private List<Location> location = new ArrayList<>();
+	
+	@NotNull(message = "phone number cannot be blank")
 	@Column(name = "phone_number")
 	private Long phoneNumber;
 	
@@ -59,17 +62,91 @@ public class User {
 	@Column(name = "role")
 	private Role role;
 	
-	@Column(name = "createdBy", updatable = false)
+	@Column(name = "created")
 	private String createdBy;
 	
-	@JsonFormat(pattern = "dd.MM.yyyy")
-	@Column(name = "createdAt", insertable = false, updatable = false)
-	private Timestamp createdAt;
+//	@JsonFormat(pattern = "dd.MM.yyyy")
+//	@Column(name = "createdAt", insertable = false, updatable = false)
+//	private Timestamp createdAt;
 	
-	@Column(name = "changedBy")
+	@Column(name = "changed")
 	private String changedBy;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Location getUser_location() {
+		return userLocation;
+	}
+
+	public void setUser_location(Location userLocation) {
+		this.userLocation = userLocation;
+	}
+
+	public Long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getChangedBy() {
+		return changedBy;
+	}
+
+	public void setChangedBy(String changedBy) {
+		this.changedBy = changedBy;
+	}
 	
-	@JsonFormat(pattern = "dd.MM.yyyy")
-	@Column(name = "changedAt")
-	private Timestamp changedAt;
+//	@JsonFormat(pattern = "dd.MM.yyyy")
+//	@Column(name = "changedAt")
+//	private Timestamp changedAt;
+	
+	
 }

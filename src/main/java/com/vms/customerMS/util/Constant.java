@@ -6,5 +6,5 @@ public class Constant {
 	public static final String CUSTOMER_SCHEMA = "customer";
 	
 	// table
-	public static final String USER_TABLE = "user";
+	public static final String USER_TABLE = "end_user";
 }

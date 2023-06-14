@@ -1,63 +1,20 @@
-package com.vms.customerMS.entity;
+package com.vms.customerMS.dto;
 
-
-import org.hibernate.annotations.NaturalId;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-
-@Entity(name = "location")
-@Table(name = "end_user_location")
-public class Location {
+public class LocationDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-	
-	@NaturalId
-	@Column(name = "location_id")
 	private String locationId;
 	
-	@Column(name = "street")
-	@NotBlank
 	private String street;
 	
-	@Column(name = "pincode")
-	@NotBlank
 	private String pincode;
 	
-	@Column(name = "state")
 	private String state;
 	
-	@Column(name = "city")
-	@NotBlank
 	private String city;
 	
-	@Column(name = "created")
 	private String createdBy;
 	
-	//@Column(name = "createdAt")
-	//private java.util.Date createdAt;
-	
-	@Column(name = "changed")
 	private String changedBy;
-	
-	//@Column(name = "changedAt")
-	//private java.util.Date changedAt;
-
-	public Long getUuId() {
-		return id;
-	}
-
-	public void setUuId(Long uuId) {
-		this.id = uuId;
-	}
 
 	public String getLocationId() {
 		return locationId;
@@ -107,7 +64,6 @@ public class Location {
 		this.createdBy = createdBy;
 	}
 
-
 	public String getChangedBy() {
 		return changedBy;
 	}
@@ -115,6 +71,4 @@ public class Location {
 	public void setChangedBy(String changedBy) {
 		this.changedBy = changedBy;
 	}
-
-
 }
