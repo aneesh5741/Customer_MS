@@ -1,6 +1,6 @@
 package com.vms.customerMS.dto;
 
-import com.vms.customerMS.util.Role;
+import com.vms.customerMS.entity.Role;
 
 public class UserDTO {
 	
@@ -14,7 +14,7 @@ public class UserDTO {
 
 	private String email;
 
-	private Role role;
+	private com.vms.customerMS.entity.Role role;
 	
 	private String createdBy;
 	

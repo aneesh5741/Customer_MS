@@ -138,44 +138,4 @@ public class Location {
 	public void setChangedBy(String changedBy) {
 		this.changedBy = changedBy;
 	}
-
-
-	@Id
-	@Column(name = "id")
-	private Long id;
-	
-	@NotBlank
-	@Column(name = "street")
-	private String street;
-	
-	@NotBlank
-	@Column(name = "city")
-	private String city;
-	
-	@NotBlank
-	@Column(name = "pincode")
-	private Long pincode;
-	
-	@NotBlank
-	@Column(name = "state")
-	private String state;
-	
-	@NotNull
-	@Column(name = "country")
-	@Enumerated(EnumType.STRING)
-	private Country country;
-	
-	@Column(name = "created_by", updatable = false)
-	private String createdBy;
-	
-	@JsonFormat(pattern = "dd.MM.yyyy")
-	@Column(name = "created_at", insertable = false, updatable = false)
-	private Timestamp createdAt;
-	
-	@Column(name = "changed_by")
-	private String changedBy;
-	
-	@JsonFormat(pattern = "dd.MM.yyyy")
-	@Column(name = "changed_at")
-	private Timestamp changedAt;
 }
