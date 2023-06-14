@@ -1,4 +1,4 @@
-package com.vms.customerMS.util;
+package com.vms.customerMS.entity;
 
 public enum Role {
 	EMPLOYEE,

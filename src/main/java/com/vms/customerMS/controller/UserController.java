@@ -50,6 +50,7 @@ public class UserController {
 	}
 
 	//UpdateUser(need PathVariable): user/update/ -> RequestBody -> return UserObject
+
 	//can we use patch mapping, instead of full request body we can send the updated things
 	@PutMapping(path = "/update/{email}")
 	public User updateUser(@RequestBody(required = true) UserDTO user) {

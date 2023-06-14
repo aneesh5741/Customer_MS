@@ -1,7 +1,6 @@
 package com.vms.customerMS.entity;
 
 import com.vms.customerMS.util.Constant;
-import com.vms.customerMS.util.Role;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
