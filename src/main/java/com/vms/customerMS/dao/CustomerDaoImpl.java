@@ -1,44 +1,36 @@
 package com.vms.customerMS.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.vms.customerMS.dto.LocationDTO;
 import com.vms.customerMS.dto.UserDTO;
-import com.vms.customerMS.entity.Location;
 import com.vms.customerMS.entity.User;
 import com.vms.customerMS.repository.UserRepository;
+import com.vms.customerMS.util.Convertors;
 
 @Component
 public class CustomerDaoImpl implements CustomerDao{
 	
-	@Autowired
 	private UserRepository userRepository;
-
 	
-	// can we use some kind of mapper to map values from dto to entity
-	public String createUser(UserDTO userDTO) {
-		
-		// put mapping method in dto and entity respectively
-		User user = new User();
-		user.setFirstName(userDTO.getFirstName());
-		user.setLastName(userDTO.getLastName());
-		user.setPhoneNumber(userDTO.getPhoneNumber());
-		user.setEmail(userDTO.getEmail());
-		user.setRole(userDTO.getRole());
-
-		Location location = new Location();
-		LocationDTO locationdto = userDTO.getLocation();
-		location.setStreet(locationdto.getStreet());
-		location.setPincode(locationdto.getPincode());
-		location.setState(locationdto.getState());
-		location.setCity(locationdto.getCity());	
-		
-		user.setUser_location(location);
+	private Convertors convertors;
+	
+	CustomerDaoImpl(UserRepository userRepository, Convertors convertors){
+		this.userRepository = userRepository;
+		this.convertors = convertors;
+	}
+	
+	public Long createUser(UserDTO userDTO) {
+		User user = convertors.UserDTOtoUser(userDTO);
 		userRepository.save(user);
-		
-		return "created successfully";
-		
+		return user.getId();	
+	}
+	
+	
+	public UserDTO getUserbyEmail(String emailId) {
+		User user =  userRepository.findByemail(emailId);
+		UserDTO userDTO = convertors.UserconvertEntityToDTO(user);
+		System.out.println(user.getFirstName());
+		return userDTO;
 	}
 	
 }

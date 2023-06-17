@@ -3,14 +3,17 @@ package com.vms.customerMS.entity;
 
 import org.hibernate.annotations.NaturalId;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vms.customerMS.util.Constant;
@@ -39,27 +42,27 @@ import lombok.NoArgsConstructor;
 public class Location {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private String id;
 	
 	@NaturalId
 	@Column(name = "location_id")
 	private String locationId;
 	
 	@Column(name = "street")
-	@NotBlank
+	@NotBlank(message = "street empty q h")
 	private String street;
 	
 	@Column(name = "pincode")
-	@NotBlank
+	@NotBlank(message = "pincode empty q h")
 	private String pincode;
 	
 	@Column(name = "state")
 	private String state;
 	
 	@Column(name = "city")
-	@NotBlank
+	@NotBlank(message = "city empty q h")
 	private String city;
 	
 	@Column(name = "created")
@@ -74,11 +77,11 @@ public class Location {
 	//@Column(name = "changedAt")
 	//private java.util.Date changedAt;
 
-	public Long getUuId() {
+	public String getUuId() {
 		return id;
 	}
 
-	public void setUuId(Long uuId) {
+	public void setUuId(String uuId) {
 		this.id = uuId;
 	}
 
@@ -137,5 +140,11 @@ public class Location {
 
 	public void setChangedBy(String changedBy) {
 		this.changedBy = changedBy;
+	}
+	
+	
+	@PrePersist
+	private void createUUid() {
+		this.setUuId(UUID.randomUUID().toString());
 	}
 }

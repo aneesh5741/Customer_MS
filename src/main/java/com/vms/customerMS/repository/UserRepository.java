@@ -7,5 +7,7 @@ import com.vms.customerMS.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
+	
+	User findByemail(String emailId);
 
 }

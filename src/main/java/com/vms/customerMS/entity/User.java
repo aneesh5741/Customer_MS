@@ -41,7 +41,7 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, orphanRemoval = true)
 	@JoinColumn(name = "user_location_id", unique = true)
 	private Location userLocation;
 	
@@ -95,11 +95,13 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Location getUser_location() {
+	
+
+	public Location getUserLocation() {
 		return userLocation;
 	}
 
-	public void setUser_location(Location userLocation) {
+	public void setUserLocation(Location userLocation) {
 		this.userLocation = userLocation;
 	}
 
@@ -147,5 +149,10 @@ public class User {
 //	@Column(name = "changedAt")
 //	private Timestamp changedAt;
 	
+	
+//	@PrePersist
+//	private void createUUid() {
+//		this.setUuId(UUID.randomUUID().toString());
+//	}
 	
 }

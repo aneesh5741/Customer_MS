@@ -4,7 +4,7 @@ import com.vms.customerMS.entity.Role;
 
 public class UserDTO {
 	
-	private Long id;
+	//private Long id;
 
 	private String firstName;
 	
@@ -22,13 +22,13 @@ public class UserDTO {
 	
 	private LocationDTO location;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public String getFirstName() {
 		return firstName;
