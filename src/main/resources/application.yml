@@ -1,0 +1,18 @@
+server:
+  port: 8085
+spring:
+  config:
+   import: optional:configserver:http://localhost:8888 # remove optional to make it fail fast
+  application:
+    name: customerms
+  cloud:
+    config:
+     uri: optional:configserver:http://localhost:8888  # if using bootstrap.properties then add this there
+     label: resources_345
+  profiles:
+    active: dev
+    
+encrypt:
+  key: ANDKANDOFPR
+    
+      
