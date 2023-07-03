@@ -24,6 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	// missing exception handling
 	public UserDTO getUserByEmail(String emailId) {
+		System.out.println(emailId);
 		return customerDao.getUserbyEmail(emailId);
 	}
 }

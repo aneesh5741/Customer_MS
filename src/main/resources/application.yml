@@ -1,18 +1,46 @@
 server:
   port: 8085
+
+#spring:
+#  config:
+#   import: 'optional:configserver:' # remove optional to make it fail fast
+#  application:
+#    name: customerms
+#  cloud:
+#    config:
+#     discovery:
+#      enabled: true
+#      serviceId: CONFIGSERVER
+#      fail-fast: true
+#    # uri: optional:configserver:http://localhost:8585  # if using bootstrap.properties then add this there
+#     label: resources_345
+#  profiles:
+#    active: dev
+
 spring:
   config:
-   import: optional:configserver:http://localhost:8888 # remove optional to make it fail fast
+   import: optional:configserver:http://localhost:8585 # remove optional to make it fail fast
   application:
     name: customerms
   cloud:
     config:
-     uri: optional:configserver:http://localhost:8888  # if using bootstrap.properties then add this there
+     uri: optional:configserver:http://localhost:8585  # if using bootstrap.properties then add this there
      label: resources_345
   profiles:
     active: dev
     
+    
 encrypt:
   key: ANDKANDOFPR
+  
+eureka:
+ instance:
+  hostname: localhost
+  prefer-ip-address: false 
+ client:
+  fetch-registry: true
+  register-with-eureka: true 
+  serviceUrl:
+    defaultZone: http://localhost:8181/eureka/
     
       
